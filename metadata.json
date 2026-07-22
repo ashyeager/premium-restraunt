@@ -1,0 +1,6 @@
+{
+  "name": "Maison Noir",
+  "description": "Premium dark luxury restaurant website concept.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
