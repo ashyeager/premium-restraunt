@@ -1,6 +1,6 @@
 {
-  "name": "Maison Noir",
-  "description": "Premium dark luxury restaurant website concept.",
+  "name": "Wok House",
+  "description": "Pan-Asian street food landing page with a custom wok box builder and WhatsApp order integration.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

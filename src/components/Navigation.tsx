@@ -1,119 +1,84 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, ShoppingBag } from 'lucide-react';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [language, setLanguage] = useState<'en' | 'ar'>('en');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    document.documentElement.lang = language;
-    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-  }, [language]);
-
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === 'en' ? 'ar' : 'en'));
-  };
-
-  const navLinks = {
-    en: {
-      brand: "Maison Noir",
-      philosophy: "Philosophy",
-      menu: "Menu",
-      privateDining: "Private Dining",
-      reservations: "Reservations",
-      book: "Book a Table",
-    },
-    ar: {
-      brand: "ميزون نوار",
-      philosophy: "فلسفتنا",
-      menu: "القائمة",
-      privateDining: "طعام خاص",
-      reservations: "الحجوزات",
-      book: "احجز طاولة",
-    }
-  };
-
-  const t = navLinks[language];
+  const navLinks = [
+    { name: "Build Your Wok", href: "#build" },
+    { name: "Signature Dishes", href: "#menu" },
+    { name: "Location", href: "#location" }
+  ];
 
   return (
     <>
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-transparent ${
-          isScrolled ? 'bg-[#0A0A0A]/70 backdrop-blur-xl border-[#F4F1EB]/10 py-5' : 'bg-transparent py-8'
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+          isScrolled || isMenuOpen ? 'bg-[#0D0D0D]/95 backdrop-blur-md border-b border-[#26262E]' : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
-          <a href="#" className="font-serif text-2xl lg:text-3xl tracking-wide text-[#F4F1EB]">{t.brand}</a>
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center">
+            <button 
+              className="text-[#F4F1EB] p-2 -ml-2 min-h-[48px] min-w-[48px] flex items-center justify-center"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
           
-          <div className="hidden md:flex gap-12 text-[11px] font-light tracking-[0.2em] uppercase text-[#F4F1EB]">
-            <a href="#philosophy" className="hover:text-white/60 transition-colors">{t.philosophy}</a>
-            <a href="#menu" className="hover:text-white/60 transition-colors">{t.menu}</a>
-            <a href="#reservations" className="hover:text-white/60 transition-colors">{t.privateDining}</a>
-          </div>
+          <a href="#" className="font-serif text-xl md:text-2xl tracking-[0.2em] uppercase text-[#E5A93C] hover:text-white transition-colors duration-300 absolute left-1/2 -translate-x-1/2">
+            Wok House
+          </a>
 
-          <div className="hidden md:flex items-center gap-6">
-            <button 
-              onClick={toggleLanguage}
-              className="flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-[#F4F1EB]/70 hover:text-[#F4F1EB] transition-colors"
+          <div className="flex items-center">
+            <a 
+              href="#build"
+              className="text-[#F4F1EB] hover:text-[#C8102E] transition-colors p-2 -mr-2 min-h-[48px] min-w-[48px] flex items-center justify-center"
             >
-              <Globe className="w-4 h-4" />
-              {language === 'en' ? 'AR' : 'EN'}
-            </button>
-            <a href="#reservations" className="text-[10px] tracking-[0.2em] uppercase border border-[#F4F1EB]/30 px-8 py-3 hover:bg-[#F4F1EB] hover:text-[#0A0A0A] transition-all duration-500 text-[#F4F1EB]">
-              {t.reservations}
+              <ShoppingBag className="w-5 h-5" />
             </a>
-          </div>
-
-          <div className="md:hidden flex items-center gap-4">
-            <button 
-              onClick={toggleLanguage}
-              className="flex items-center text-[#F4F1EB]/70 hover:text-[#F4F1EB] transition-colors"
-            >
-              <Globe className="w-5 h-5" />
-            </button>
-            <button 
-              className="p-2 -mr-2 text-[#F4F1EB]"
-              onClick={() => setMobileMenuOpen(true)}
-            >
-              <Menu className="w-6 h-6" />
-            </button>
           </div>
         </div>
       </motion.nav>
 
       <AnimatePresence>
-        {mobileMenuOpen && (
+        {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-2xl flex flex-col justify-center items-center"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-40 bg-[#0D0D0D] pt-24 px-6"
           >
-            <button 
-              className={`absolute top-8 ${language === 'ar' ? 'left-6' : 'right-6'} p-4 text-[#F4F1EB]`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <X className="w-8 h-8" />
-            </button>
-            <div className="flex flex-col gap-10 text-center font-serif text-4xl text-[#F4F1EB]">
-              <a href="#philosophy" onClick={() => setMobileMenuOpen(false)} className="hover:opacity-70 transition-opacity">{t.philosophy}</a>
-              <a href="#menu" onClick={() => setMobileMenuOpen(false)} className="hover:opacity-70 transition-opacity">{t.menu}</a>
-              <a href="#reservations" onClick={() => setMobileMenuOpen(false)} className="hover:opacity-70 transition-opacity">{t.privateDining}</a>
-              <a href="#reservations" onClick={() => setMobileMenuOpen(false)} className="mt-12 text-xs font-sans tracking-[0.2em] uppercase border border-[#F4F1EB]/30 px-10 py-5 hover:bg-[#F4F1EB] hover:text-[#0A0A0A] transition-colors">
-                {t.book}
+            <div className="flex flex-col gap-8 text-center mt-12">
+              {navLinks.map((link) => (
+                <a 
+                  key={link.name}
+                  href={link.href} 
+                  className="text-2xl font-serif uppercase text-[#F4F1EB] hover:text-[#C8102E] transition-colors tracking-wider flex items-center justify-center min-h-[48px]"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ))}
+              <a 
+                href="https://wa.me/96812345678"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 mx-auto px-8 py-4 bg-[#C8102E] text-white font-bold uppercase tracking-wider rounded-md w-full max-w-xs min-h-[48px] flex items-center justify-center"
+              >
+                Order Now
               </a>
             </div>
           </motion.div>
