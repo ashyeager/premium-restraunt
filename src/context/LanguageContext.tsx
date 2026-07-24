@@ -14,8 +14,10 @@ const translations: Record<string, Record<Language, string>> = {
   "nav.menu": { en: "Signature Dishes", ar: "أطباقنا المميزة" },
   "nav.location": { en: "Location", ar: "الموقع" },
   "nav.order": { en: "Order Now", ar: "اطلب الآن" },
+  "nav.restaurant": { en: "Restaurant", ar: "مطعم" },
 
   // Hero
+  "hero.badge": { en: "🔥 Muscat's Ultimate Wok Experience", ar: "🔥 تجربة الووك الأفضل في مسقط" },
   "hero.subtitle": { en: "Premium Asian Street Food", ar: "طعام الشارع الآسيوي الفاخر" },
   "hero.title1": { en: "Sizzle.", ar: "أزيز." },
   "hero.title2": { en: "Smoke.", ar: "دخان." },
@@ -74,7 +76,8 @@ const translations: Record<string, Record<Language, string>> = {
 
   // Location
   "loc.title": { en: "WOK HOUSE", ar: "ووك هاوس" },
-  "loc.subtitle": { en: "The Experience of Heat", ar: "تجربة الحرارة العالية" },
+  "loc.subtitle": { en: "Authentic Asian Restaurant", ar: "مطعم آسيوي أصيل" },
+  "loc.description": { en: "Savor the authentic taste of premium wok-fired Asian street food. Conveniently located in the Food Court of Muscat Grand Mall, our chef prepares custom-built woks sizzled to order in front of you.", ar: "تذوق الطعم الأصيل لأطباق الشارع الآسيوية الفاخرة المطهوة على مقلاة الووك. يقع مطعمنا في ردهة مطاعم مسقط جراند مول، حيث يعد الشيف أطباقك المخصصة طازجة أمام عينيك." },
   "loc.location": { en: "Location", ar: "الموقع" },
   "loc.address1": { en: "Food Court, Muscat Grand Mall (MGM)", ar: "ردهة المطاعم، مسقط جراند مول" },
   "loc.address2": { en: "Al Khuwair, Muscat, Oman", ar: "الخوير، مسقط، عُمان" },

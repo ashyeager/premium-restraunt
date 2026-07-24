@@ -26,46 +26,70 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/30 via-transparent to-[#0D0D0D]" />
       </motion.div>
 
-      <div className="relative z-10 text-left flex flex-col items-start px-6 lg:px-12 mt-16 max-w-5xl mx-auto w-full rtl:text-right rtl:items-start">
+      <div className="relative z-10 text-left flex flex-col items-start px-6 lg:px-12 mt-20 max-w-5xl mx-auto w-full rtl:text-right rtl:items-start">
+        {/* Ultimate Wok Experience Badge */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E5A93C]/10 border border-[#E5A93C]/20 mb-6 backdrop-blur-sm"
+        >
+          <span className="text-[#E5A93C] text-[10px] md:text-xs font-bold uppercase tracking-[0.15em]">
+            {t('hero.badge')}
+          </span>
+        </motion.div>
+
+        {/* Subtitle */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-[#E5A93C] text-[10px] md:text-sm font-bold uppercase tracking-[0.2em] mb-4"
+          className="text-gray-400 text-xs md:text-sm font-bold uppercase tracking-[0.2em] mb-4"
         >
           {t('hero.subtitle')}
         </motion.div>
         
+        {/* Main Title - Structured & High Contrast */}
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="font-serif text-6xl md:text-7xl lg:text-8xl font-bold tracking-normal leading-[1] mb-6 text-white"
+          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="font-serif text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-6 text-white max-w-4xl"
         >
-          {t('hero.title1')}<br/>
-          {t('hero.title2')}<br/>
-          <span className="text-[#C8102E]">{t('hero.title3')}</span>
+          <span className="text-[#E5A93C] drop-shadow-[0_2px_15px_rgba(229,169,60,0.15)]">{t('hero.title1')}</span>{' '}
+          <span className="text-white">{t('hero.title2')}</span>{' '}
+          <span className="text-[#C8102E] drop-shadow-[0_2px_15px_rgba(200,16,46,0.3)] block md:inline">{t('hero.title3')}</span>
         </motion.h1>
 
+        {/* Description with enhanced legibility */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="text-base md:text-lg text-white/80 max-w-[280px] md:max-w-md mb-10 leading-relaxed font-light"
+          transition={{ duration: 1, delay: 0.4 }}
+          className="text-base md:text-lg text-gray-200 max-w-md md:max-w-xl mb-10 leading-relaxed font-light"
         >
           {t('hero.desc')}
         </motion.p>
 
+        {/* Action CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="flex flex-col gap-3 w-full max-w-[320px]"
+          transition={{ duration: 1, delay: 0.5 }}
+          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto min-w-[320px] sm:min-w-[450px]"
         >
-          <a href="#build" className="flex items-center justify-center gap-3 bg-[#C8102E] text-white px-8 py-4 font-semibold uppercase tracking-widest rounded-md text-sm hover:bg-[#A30D25] transition-all duration-300 w-full text-center min-h-[48px]">
+          <a 
+            href="#build" 
+            className="flex items-center justify-center gap-3 bg-[#C8102E] text-white px-8 py-4 font-bold uppercase tracking-widest rounded text-xs hover:bg-[#A30D25] hover:shadow-[0_0_30px_rgba(200,16,46,0.4)] transform hover:-translate-y-0.5 transition-all duration-300 flex-1 text-center min-h-[48px]"
+          >
             {t('hero.build')}
           </a>
-          <a href="https://wa.me/96812345678" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-8 py-4 bg-[#16161A]/80 backdrop-blur-sm text-white font-semibold uppercase tracking-widest rounded-md text-sm hover:bg-[#26262E] transition-all duration-300 w-full border border-[#26262E] text-center min-h-[48px]">
+          <a 
+            href="https://wa.me/96812345678" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center justify-center gap-3 px-8 py-4 bg-[#16161A]/90 backdrop-blur-sm text-white font-bold uppercase tracking-widest rounded text-xs hover:bg-[#26262E] hover:border-[#E5A93C]/50 border border-[#26262E] transform hover:-translate-y-0.5 transition-all duration-300 flex-1 text-center min-h-[48px]"
+          >
             <MessageSquare className="w-4 h-4 text-[#E5A93C]" />
             {t('hero.whatsapp')}
           </a>
