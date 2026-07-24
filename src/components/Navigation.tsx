@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X, ShoppingBag, Globe } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -13,9 +15,9 @@ export default function Navigation() {
   }, []);
 
   const navLinks = [
-    { name: "Build Your Wok", href: "#build" },
-    { name: "Signature Dishes", href: "#menu" },
-    { name: "Location", href: "#location" }
+    { name: t('nav.build'), href: "#build" },
+    { name: t('nav.menu'), href: "#menu" },
+    { name: t('nav.location'), href: "#location" }
   ];
 
   return (
@@ -29,12 +31,19 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
             <button 
-              className="text-[#F4F1EB] p-2 -ml-2 min-h-[48px] min-w-[48px] flex items-center justify-center"
+              className="text-[#F4F1EB] p-2 -mx-2 min-h-[48px] min-w-[48px] flex items-center justify-center"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+            <button
+              onClick={toggleLanguage}
+              className="hidden md:flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors p-2"
+            >
+              <Globe className="w-4 h-4" />
+              {language === 'en' ? 'عربي' : 'EN'}
             </button>
           </div>
           
@@ -42,10 +51,16 @@ export default function Navigation() {
             Wok House
           </a>
 
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleLanguage}
+              className="md:hidden flex items-center justify-center text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors p-2 min-h-[48px] min-w-[48px]"
+            >
+              {language === 'en' ? 'عربي' : 'EN'}
+            </button>
             <a 
               href="#build"
-              className="text-[#F4F1EB] hover:text-[#C8102E] transition-colors p-2 -mr-2 min-h-[48px] min-w-[48px] flex items-center justify-center"
+              className="text-[#F4F1EB] hover:text-[#C8102E] transition-colors p-2 -mx-2 min-h-[48px] min-w-[48px] flex items-center justify-center"
             >
               <ShoppingBag className="w-5 h-5" />
             </a>
@@ -78,7 +93,7 @@ export default function Navigation() {
                 rel="noopener noreferrer"
                 className="mt-8 mx-auto px-8 py-4 bg-[#C8102E] text-white font-bold uppercase tracking-wider rounded-md w-full max-w-xs min-h-[48px] flex items-center justify-center"
               >
-                Order Now
+                {t('nav.order')}
               </a>
             </div>
           </motion.div>

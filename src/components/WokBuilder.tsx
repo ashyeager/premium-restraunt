@@ -1,34 +1,37 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Check } from 'lucide-react';
-
-const steps = [
-  { id: 'base', title: 'Base Selection', num: '1' },
-  { id: 'protein', title: 'Choose Protein', num: '2' },
-  { id: 'sauce', title: 'Signature Sauce', num: '3' }
-];
-
-const menuOptions = {
-  base: [
-    { id: 'hakka_noodles', name: 'Hakka Noodles', desc: 'Included', price: 0.000 },
-    { id: 'jasmine_rice', name: 'Jasmine Steam Rice', desc: 'Included', price: 0.000 },
-    { id: 'udon', name: 'Udon Noodles', desc: 'Thick & chewy', price: 0.300 }
-  ],
-  protein: [
-    { id: 'charred_beef', name: 'Charred Beef', desc: 'Smoky & tender', price: 1.200 },
-    { id: 'kung_pao_shrimp', name: 'Kung Pao Shrimp', desc: 'Spicy & nutty', price: 1.400 },
-    { id: 'tender_chicken', name: 'Tender Chicken', desc: 'Wok-seared', price: 0.900 },
-    { id: 'tofu_veggies', name: 'Fresh Tofu & Veggies', desc: 'Crisp & light', price: 0.500 }
-  ],
-  sauce: [
-    { id: 'szechuan_chili', name: 'Szechuan Chili', desc: 'Spicy kick', price: 0.000 },
-    { id: 'sweet_soy_teriyaki', name: 'Sweet Soy Teriyaki', desc: 'Sweet & savory', price: 0.000 },
-    { id: 'garlic_black_pepper', name: 'Garlic Black Pepper', desc: 'Rich & peppery', price: 0.000 }
-  ]
-};
+import { useLanguage } from '../context/LanguageContext';
 
 export default function WokBuilder() {
+  const { t } = useLanguage();
   const [activeStepIndex, setActiveStepIndex] = useState(0);
+
+  const steps = [
+    { id: 'base', title: t('builder.step1'), num: '1' },
+    { id: 'protein', title: t('builder.step2'), num: '2' },
+    { id: 'sauce', title: t('builder.step3'), num: '3' }
+  ];
+
+  const menuOptions = {
+    base: [
+      { id: 'hakka_noodles', nameKey: 'item.hakka.name', descKey: 'item.hakka.desc', price: 0.000 },
+      { id: 'jasmine_rice', nameKey: 'item.jasmine.name', descKey: 'item.jasmine.desc', price: 0.000 },
+      { id: 'udon', nameKey: 'item.udon.name', descKey: 'item.udon.desc', price: 0.300 }
+    ],
+    protein: [
+      { id: 'charred_beef', nameKey: 'item.beef.name', descKey: 'item.beef.desc', price: 1.200 },
+      { id: 'kung_pao_shrimp', nameKey: 'item.shrimp.name', descKey: 'item.shrimp.desc', price: 1.400 },
+      { id: 'tender_chicken', nameKey: 'item.chicken.name', descKey: 'item.chicken.desc', price: 0.900 },
+      { id: 'tofu_veggies', nameKey: 'item.tofu.name', descKey: 'item.tofu.desc', price: 0.500 }
+    ],
+    sauce: [
+      { id: 'szechuan_chili', nameKey: 'item.szechuan.name', descKey: 'item.szechuan.desc', price: 0.000 },
+      { id: 'sweet_soy_teriyaki', nameKey: 'item.teriyaki.name', descKey: 'item.teriyaki.desc', price: 0.000 },
+      { id: 'garlic_black_pepper', nameKey: 'item.garlic.name', descKey: 'item.garlic.desc', price: 0.000 }
+    ]
+  };
+
   const [selections, setSelections] = useState<Record<string, string>>({
     base: '',
     protein: '',
@@ -59,10 +62,14 @@ export default function WokBuilder() {
     if (!isComplete) return;
     
     const getNames = () => {
-      const b = menuOptions.base.find(i => i.id === selections.base)?.name;
-      const p = menuOptions.protein.find(i => i.id === selections.protein)?.name;
-      const s = menuOptions.sauce.find(i => i.id === selections.sauce)?.name;
-      return { b, p, s };
+      const b = menuOptions.base.find(i => i.id === selections.base)?.nameKey;
+      const p = menuOptions.protein.find(i => i.id === selections.protein)?.nameKey;
+      const s = menuOptions.sauce.find(i => i.id === selections.sauce)?.nameKey;
+      return { 
+        b: b ? t(b) : '', 
+        p: p ? t(p) : '', 
+        s: s ? t(s) : '' 
+      };
     };
     
     const names = getNames();
@@ -82,7 +89,7 @@ export default function WokBuilder() {
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-16 flex flex-col items-center">
           <h2 className="font-serif text-4xl md:text-5xl font-bold tracking-wide mb-4 text-white">
-            Build Your Box
+            {t('builder.title')}
           </h2>
           <div className="w-16 h-1 bg-[#C8102E] rounded"></div>
         </div>
@@ -121,14 +128,14 @@ export default function WokBuilder() {
                     }`}
                   >
                     <span className={`font-semibold text-lg mb-1 ${isSelected ? 'text-[#C8102E]' : 'text-white'}`}>
-                      {option.name}
+                      {t(option.nameKey)}
                     </span>
                     <span className="text-sm text-gray-400 text-center mb-2 px-2">
-                      {option.desc}
+                      {t(option.descKey)}
                     </span>
                     {option.price > 0 && (
                       <span className="text-xs font-mono text-[#E5A93C] bg-[#E5A93C]/10 px-2 py-1 rounded">
-                        +{option.price.toFixed(3)} OMR
+                        +{option.price.toFixed(3)} {t('builder.omr')}
                       </span>
                     )}
                     {isSelected && (
@@ -147,9 +154,9 @@ export default function WokBuilder() {
         <div className="flex flex-col gap-6 max-w-md mx-auto w-full">
            <div className="flex justify-between items-center bg-[#16161A] p-6 rounded-lg border border-[#26262E] shadow-xl">
              <div>
-               <p className="text-xs text-gray-400 mb-1 uppercase tracking-widest">Estimated Total</p>
+               <p className="text-xs text-gray-400 mb-1 uppercase tracking-widest">{t('builder.total')}</p>
                <div className="font-mono text-3xl font-bold text-[#E5A93C]">
-                 {calculateTotal().toFixed(3)} <span className="text-sm text-gray-400 font-sans">OMR</span>
+                 {calculateTotal().toFixed(3)} <span className="text-sm text-gray-400 font-sans">{t('builder.omr')}</span>
                </div>
              </div>
              
@@ -158,7 +165,7 @@ export default function WokBuilder() {
                   onClick={() => setActiveStepIndex(prev => prev - 1)} 
                   className="text-gray-400 hover:text-white text-sm uppercase tracking-wider transition-colors min-h-[48px] px-6 border border-[#26262E] rounded-md hover:bg-[#26262E] flex items-center justify-center"
                 >
-                  Back
+                  {t('builder.back')}
                 </button>
              )}
            </div>
@@ -178,7 +185,7 @@ export default function WokBuilder() {
                  : 'bg-[#C8102E] text-white hover:bg-[#A30D25] shadow-lg shadow-[#C8102E]/20'
              }`}
            >
-             {activeStepIndex < steps.length - 1 ? 'Next Step' : 'Send Custom Order via WhatsApp'}
+             {activeStepIndex < steps.length - 1 ? t('builder.next') : t('builder.checkout')}
            </button>
         </div>
         

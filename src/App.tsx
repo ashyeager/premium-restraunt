@@ -7,6 +7,7 @@ import React, { Suspense, lazy } from 'react';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import BottomNav from './components/BottomNav';
+import { LanguageProvider } from './context/LanguageContext';
 
 import {
   HeroSkeleton,
@@ -35,27 +36,29 @@ const LocationInfo = lazyWithDelay(() => import('./components/LocationInfo'));
 
 export default function App() {
   return (
-    <main className="min-h-screen bg-[#0D0D0D] text-white font-sans selection:bg-[#C8102E] selection:text-white">
-      <Navigation />
-      
-      <Suspense fallback={<HeroSkeleton />}>
-        <Hero />
-      </Suspense>
-      
-      <Suspense fallback={<InteractiveMenuSkeleton />}>
-        <WokBuilder />
-      </Suspense>
-      
-      <Suspense fallback={<SignatureDishesSkeleton />}>
-        <PopularDishes />
-      </Suspense>
-      
-      <Suspense fallback={<LocationSkeleton />}>
-        <LocationInfo />
-      </Suspense>
-      
-      <Footer />
-      <BottomNav />
-    </main>
+    <LanguageProvider>
+      <main className="min-h-screen bg-[#0D0D0D] text-white font-sans selection:bg-[#C8102E] selection:text-white">
+        <Navigation />
+        
+        <Suspense fallback={<HeroSkeleton />}>
+          <Hero />
+        </Suspense>
+        
+        <Suspense fallback={<InteractiveMenuSkeleton />}>
+          <WokBuilder />
+        </Suspense>
+        
+        <Suspense fallback={<SignatureDishesSkeleton />}>
+          <PopularDishes />
+        </Suspense>
+        
+        <Suspense fallback={<LocationSkeleton />}>
+          <LocationInfo />
+        </Suspense>
+        
+        <Footer />
+        <BottomNav />
+      </main>
+    </LanguageProvider>
   );
 }
