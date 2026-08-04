@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { MessageSquare } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
@@ -7,13 +7,29 @@ import heroFoodVisual from '../assets/hero-food-visual.svg';
 export default function Hero() {
   const { t, language } = useLanguage();
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"]
   });
 
+  useEffect(() => {
+    const checkViewport = () => setIsMobile(window.innerWidth < 768);
+    checkViewport();
+    window.addEventListener('resize', checkViewport);
+    return () => window.removeEventListener('resize', checkViewport);
+  }, []);
+
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const heroPreviewAnimation = isMobile
+    ? { rotate: [-2.5, 3.5, -2.5], y: [0, -5, 0], x: [0, 3, 0], scale: [0.99, 1, 0.99] }
+    : { rotate: [-4, 6, -4], y: [0, -8, 0], x: [0, 5, 0], scale: [0.98, 1, 0.98] };
+  const heroOrbAnimation = isMobile
+    ? { scale: [0.98, 1.02, 0.98], opacity: [0.95, 1, 0.95] }
+    : { scale: [0.96, 1.02, 0.96], opacity: [0.9, 1, 0.9] };
+  const heroPreviewDuration = isMobile ? 8.5 : 7;
+  const heroOrbDuration = isMobile ? 7.5 : 6.5;
 
   return (
     <section ref={ref} className="relative min-h-screen w-full overflow-hidden bg-[#0D0D0D]">
@@ -101,17 +117,19 @@ export default function Hero() {
             transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[460px] lg:flex-shrink-0"
           >
-            <div className="relative mx-auto aspect-square w-full [perspective:1200px]">
+            <div className="relative mx-auto mt-2 aspect-square w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[460px] [perspective:1200px]">
               <motion.div
-                animate={{ rotate: [-4, 6, -4], y: [0, -8, 0], x: [0, 5, 0] }}
-                transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute inset-0 rounded-[2.5rem] border border-[#E5A93C]/20 bg-[radial-gradient(circle_at_top_left,_rgba(229,169,60,0.16),_transparent_45%),linear-gradient(135deg,_rgba(255,255,255,0.08),_rgba(255,255,255,0.01))] shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+                animate={heroPreviewAnimation}
+                transition={{ duration: heroPreviewDuration, repeat: Infinity, ease: 'easeInOut' }}
+                style={{ willChange: 'transform' }}
+                className="absolute inset-0 rounded-[2.5rem] border border-[#E5A93C]/20 bg-[radial-gradient(circle_at_top_left,_rgba(229,169,60,0.16),_transparent_45%),linear-gradient(135deg,_rgba(255,255,255,0.08),_rgba(255,255,255,0.01))] p-4 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl"
               >
                 <div className="absolute inset-4 rounded-[2rem] border border-white/10" />
                 <motion.div
-                  animate={{ scale: [0.96, 1.02, 0.96], opacity: [0.9, 1, 0.9] }}
-                  transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute left-1/2 top-1/2 h-[58%] w-[58%] -translate-x-1/2 -translate-y-1/2 rounded-[38%] border border-[#E5A93C]/35 bg-[radial-gradient(circle_at_30%_30%,_rgba(229,169,60,0.35),_rgba(200,16,46,0.1)_45%,_rgba(13,13,13,0.95)_100%)] shadow-[0_20px_60px_rgba(200,16,46,0.12)]"
+                  animate={heroOrbAnimation}
+                  transition={{ duration: heroOrbDuration, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{ willChange: 'transform' }}
+                  className="absolute left-1/2 top-1/2 h-[60%] w-[60%] -translate-x-1/2 -translate-y-1/2 rounded-[38%] border border-[#E5A93C]/35 bg-[radial-gradient(circle_at_30%_30%,_rgba(229,169,60,0.35),_rgba(200,16,46,0.1)_45%,_rgba(13,13,13,0.95)_100%)] shadow-[0_20px_60px_rgba(200,16,46,0.12)]"
                 >
                   <div className="absolute inset-[16%] rounded-full border border-white/20" />
                   <motion.div
@@ -138,6 +156,9 @@ export default function Hero() {
                 />
                 <div className="absolute left-5 top-5 rounded-full bg-[#E5A93C]/10 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.25em] text-[#E5A93C]">
                   3D Wok
+                </div>
+                <div className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-[#0D0D0D]/70 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.25em] text-gray-200">
+                  Live Preview
                 </div>
               </motion.div>
             </div>

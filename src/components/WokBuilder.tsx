@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Check } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
@@ -6,6 +6,7 @@ import { useLanguage } from '../context/LanguageContext';
 export default function WokBuilder() {
   const { t } = useLanguage();
   const [activeStepIndex, setActiveStepIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const steps = [
     { id: 'base', title: t('builder.step1'), num: '1' },
@@ -81,9 +82,23 @@ export default function WokBuilder() {
     window.open(whatsappUrl, '_blank');
   };
 
+  useEffect(() => {
+    const checkViewport = () => setIsMobile(window.innerWidth < 768);
+    checkViewport();
+    window.addEventListener('resize', checkViewport);
+    return () => window.removeEventListener('resize', checkViewport);
+  }, []);
+
   const activeCategory = steps[activeStepIndex].id as keyof typeof menuOptions;
   const currentOptions = menuOptions[activeCategory];
   const selectedItems = Object.values(selections).filter(Boolean).length;
+  const previewAnimation = isMobile
+    ? { rotate: [-3.5, 3.5, -3.5], y: [0, -6, 0], x: [0, 3, 0], scale: [0.98, 1, 0.98] }
+    : { rotate: [-6, 6, -6], y: [0, -8, 0], x: [0, 5, 0] };
+  const previewOrbAnimation = isMobile
+    ? { scale: [0.98, 1.02, 0.98], opacity: [0.95, 1, 0.95] }
+    : { rotateX: [8, -10, 8], rotateY: [-12, 12, -12] };
+  const previewDuration = isMobile ? 8.2 : 6.5;
 
   return (
     <section id="build" className="relative border-t border-[#26262E] bg-[#0D0D0D] px-4 py-20 text-[#F4F1EB] sm:px-6 lg:px-8 lg:py-24">
@@ -121,16 +136,18 @@ export default function WokBuilder() {
                     {steps[activeStepIndex].title}
                   </span>
                 </div>
-                <div className="relative mx-auto aspect-square max-w-[240px] [perspective:1200px] sm:max-w-[280px]">
+                <div className="relative mx-auto mt-2 aspect-square max-w-[260px] [perspective:1200px] sm:max-w-[300px]">
                   <motion.div
-                    animate={{ rotate: [-6, 6, -6], y: [0, -8, 0], x: [0, 5, 0] }}
-                    transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
-                    className="absolute inset-0 rounded-[2rem] border border-[#E5A93C]/30 bg-[radial-gradient(circle_at_top_left,_rgba(229,169,60,0.16),_transparent_45%),linear-gradient(135deg,_rgba(255,255,255,0.08),_rgba(255,255,255,0.01))] shadow-[0_20px_70px_rgba(0,0,0,0.3)]"
+                    animate={previewAnimation}
+                    transition={{ duration: previewDuration, repeat: Infinity, ease: 'easeInOut' }}
+                    style={{ willChange: 'transform' }}
+                    className="absolute inset-0 rounded-[2rem] border border-[#E5A93C]/30 bg-[radial-gradient(circle_at_top_left,_rgba(229,169,60,0.16),_transparent_45%),linear-gradient(135deg,_rgba(255,255,255,0.08),_rgba(255,255,255,0.01))] p-4 shadow-[0_20px_70px_rgba(0,0,0,0.3)]"
                   >
                     <motion.div
-                      animate={{ rotateX: [8, -10, 8], rotateY: [-12, 12, -12] }}
-                      transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-                      className="absolute left-1/2 top-1/2 h-[56%] w-[56%] -translate-x-1/2 -translate-y-1/2 rounded-[40%] border border-[#E5A93C]/30 bg-[radial-gradient(circle_at_30%_30%,_rgba(229,169,60,0.22),_rgba(200,16,46,0.14)_40%,_rgba(13,13,13,0.95)_100%)]"
+                      animate={previewOrbAnimation}
+                      transition={{ duration: previewDuration - 0.8, repeat: Infinity, ease: 'easeInOut' }}
+                      style={{ willChange: 'transform' }}
+                      className="absolute left-1/2 top-1/2 h-[58%] w-[58%] -translate-x-1/2 -translate-y-1/2 rounded-[40%] border border-[#E5A93C]/30 bg-[radial-gradient(circle_at_30%_30%,_rgba(229,169,60,0.22),_rgba(200,16,46,0.14)_40%,_rgba(13,13,13,0.95)_100%)]"
                     />
                     <div className="absolute inset-[18%] rounded-full border border-white/10" />
                     <div className="absolute bottom-[18%] right-[16%] h-10 w-10 rounded-full border border-[#C8102E]/30 bg-[#C8102E]/15" />
