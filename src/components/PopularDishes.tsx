@@ -63,7 +63,7 @@ export default function PopularDishes() {
               viewport={{ once: true }}
               whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-[#16161A] rounded-xl overflow-hidden border border-[#26262E] flex flex-col group shadow-2xl hover:border-[#E5A93C]/30 hover:shadow-[0_15px_35px_rgba(229,169,60,0.08)] transition-all duration-300 cursor-pointer"
+              className="bg-[#16161A] rounded-xl overflow-hidden border border-[#26262E] flex flex-col group shadow-2xl hover:border-[#E5A93C]/30 hover:shadow-[0_20px_45px_rgba(229,169,60,0.12)] transition-all duration-300 cursor-pointer"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-[#0D0D0D]">
                 <img 
@@ -86,7 +86,7 @@ export default function PopularDishes() {
                 </p>
                 <button 
                   onClick={() => handleOrder(dish.nameKey, dish.price)}
-                  className="w-full min-h-[48px] rounded-md bg-[#26262E] text-white flex items-center justify-center gap-2 hover:bg-[#C8102E] transition-colors border border-[#333333] hover:border-[#C8102E] text-sm uppercase tracking-wider font-semibold"
+                  className="w-full min-h-[48px] rounded-md bg-[#26262E] text-white flex items-center justify-center gap-2 hover:bg-[#C8102E] transition-all duration-300 border border-[#333333] hover:border-[#C8102E] hover:-translate-y-0.5 text-sm uppercase tracking-wider font-semibold"
                 >
                   <Plus className="w-4 h-4" />
                   {t('menu.add')}

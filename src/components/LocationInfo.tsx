@@ -85,7 +85,7 @@ export default function LocationInfo() {
                 href="https://maps.app.goo.gl/mPjVEXf5WfKsqh1k7" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 bg-[#26262E] text-white px-6 py-3.5 rounded font-semibold hover:bg-[#333333] transition-colors border border-[#333333] text-sm min-h-[48px] text-center"
+                className="flex-1 flex items-center justify-center gap-2 bg-[#26262E] text-white px-6 py-3.5 rounded font-semibold hover:bg-[#333333] transition-all duration-300 border border-[#333333] hover:-translate-y-0.5 text-sm min-h-[48px] text-center"
               >
                 <NavIcon className="w-4 h-4 text-[#E5A93C]" />
                 {t('loc.directions')}
@@ -94,7 +94,7 @@ export default function LocationInfo() {
                 href="https://wa.me/96812345678" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 bg-[#C8102E] text-white px-6 py-3.5 rounded font-semibold hover:bg-[#A30D25] transition-colors border border-[#C8102E] text-sm min-h-[48px] text-center shadow-lg shadow-[#C8102E]/10"
+                className="flex-1 flex items-center justify-center gap-2 bg-[#C8102E] text-white px-6 py-3.5 rounded font-semibold hover:bg-[#A30D25] transition-all duration-300 border border-[#C8102E] hover:-translate-y-0.5 text-sm min-h-[48px] text-center shadow-lg shadow-[#C8102E]/10"
               >
                 <MessageCircle className="w-4 h-4" />
                 {t('loc.contact')}

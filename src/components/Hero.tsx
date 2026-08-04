@@ -39,6 +39,7 @@ export default function Hero() {
               <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#E5A93C] md:text-xs">
                 {t('hero.badge')}
               </span>
+              <span className="h-1.5 w-1.5 rounded-full bg-[#E5A93C] shadow-[0_0_10px_rgba(229,169,60,0.9)]" />
             </motion.div>
 
             <motion.div
@@ -78,7 +79,7 @@ export default function Hero() {
             >
               <a
                 href="#build"
-                className="flex min-h-[48px] flex-1 items-center justify-center gap-3 rounded bg-[#C8102E] px-8 py-4 text-center text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#A30D25] hover:shadow-[0_0_30px_rgba(200,16,46,0.4)]"
+                className="flex min-h-[48px] flex-1 items-center justify-center gap-3 rounded bg-[#C8102E] px-8 py-4 text-center text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#A30D25] hover:shadow-[0_0_35px_rgba(200,16,46,0.45)]"
               >
                 {t('hero.build')}
               </a>
@@ -86,7 +87,7 @@ export default function Hero() {
                 href="https://wa.me/96812345678"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex min-h-[48px] flex-1 items-center justify-center gap-3 rounded border border-[#26262E] bg-[#16161A]/90 px-8 py-4 text-center text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#E5A93C]/50 hover:bg-[#26262E]"
+                className="flex min-h-[48px] flex-1 items-center justify-center gap-3 rounded border border-[#26262E] bg-[#16161A]/90 px-8 py-4 text-center text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#E5A93C]/50 hover:bg-[#26262E] hover:shadow-[0_0_25px_rgba(255,255,255,0.08)]"
               >
                 <MessageSquare className="h-4 w-4 text-[#E5A93C]" />
                 {t('hero.whatsapp')}

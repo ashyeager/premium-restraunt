@@ -169,10 +169,10 @@ export default function WokBuilder() {
                   <button
                     key={option.id}
                     onClick={() => handleSelect(activeCategory, option.id)}
-                    className={`flex flex-col items-center justify-center p-6 rounded-lg border transition-all duration-300 min-h-[140px] w-full ${
-                      isSelected 
-                        ? 'border-[#C8102E] bg-[#C8102E]/5 shadow-[0_0_20px_rgba(200,16,46,0.15)]' 
-                        : 'border-[#26262E] hover:border-[#E5A93C]/50 bg-[#16161A]'
+                    className={`flex min-h-[140px] w-full flex-col items-center justify-center rounded-lg border p-6 transition-all duration-300 hover:-translate-y-1 ${
+                      isSelected
+                        ? 'border-[#C8102E] bg-[#C8102E]/5 shadow-[0_0_24px_rgba(200,16,46,0.16)]'
+                        : 'border-[#26262E] bg-[#16161A] hover:border-[#E5A93C]/50 hover:bg-[#1B1B21]'
                     }`}
                   >
                     <span className={`font-semibold text-lg mb-1 ${isSelected ? 'text-[#C8102E]' : 'text-white'}`}>
@@ -211,7 +211,7 @@ export default function WokBuilder() {
             {activeStepIndex > 0 && (
               <button
                 onClick={() => setActiveStepIndex(prev => prev - 1)}
-                className="flex min-h-[48px] items-center justify-center rounded-md border border-[#26262E] px-6 text-sm uppercase tracking-wider text-gray-400 transition-colors hover:bg-[#26262E] hover:text-white"
+                className="flex min-h-[48px] items-center justify-center rounded-md border border-[#26262E] px-6 text-sm uppercase tracking-wider text-gray-400 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#26262E] hover:text-white"
               >
                 {t('builder.back')}
               </button>
@@ -230,7 +230,7 @@ export default function WokBuilder() {
             className={`flex min-h-[48px] w-full items-center justify-center rounded-md py-4 text-sm font-bold uppercase tracking-widest transition-all duration-300 ${
               (activeStepIndex === steps.length - 1 && !isComplete)
                 ? 'cursor-not-allowed border border-[#26262E] bg-[#16161A] text-gray-500'
-                : 'bg-[#C8102E] text-white shadow-lg shadow-[#C8102E]/20 hover:bg-[#A30D25]'
+                : 'bg-[#C8102E] text-white shadow-lg shadow-[#C8102E]/20 hover:-translate-y-1 hover:bg-[#A30D25]'
             }`}
           >
             {activeStepIndex < steps.length - 1 ? t('builder.next') : t('builder.checkout')}
