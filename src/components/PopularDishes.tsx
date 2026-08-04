@@ -35,8 +35,8 @@ export default function PopularDishes() {
   };
 
   return (
-    <section id="menu" className="py-24 px-6 bg-[#0D0D0D] border-t border-[#26262E]">
-      <div className="max-w-6xl mx-auto">
+    <section id="menu" className="border-t border-[#26262E] bg-[#0D0D0D] px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+      <div className="mx-auto max-w-6xl">
         <div className="flex justify-between items-end mb-12 border-b border-[#26262E] pb-6">
           <div>
             <h2 className="font-serif text-3xl md:text-4xl font-bold tracking-wide text-white mb-2">

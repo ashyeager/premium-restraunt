@@ -7,7 +7,7 @@ export default function LocationInfo() {
   const { t } = useLanguage();
 
   return (
-    <section id="location" className="py-24 px-6 md:px-12 bg-[#0D0D0D] border-t border-[#26262E] relative overflow-hidden">
+    <section id="location" className="relative overflow-hidden border-t border-[#26262E] bg-[#0D0D0D] px-4 py-20 sm:px-6 md:px-12 lg:py-24">
       {/* Decorative background glow */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-[#C8102E]/5 rounded-full blur-[100px] pointer-events-none -z-10" />
       <div className="absolute top-1/3 right-10 w-80 h-80 bg-[#E5A93C]/5 rounded-full blur-[100px] pointer-events-none -z-10" />

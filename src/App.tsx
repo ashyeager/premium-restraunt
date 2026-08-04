@@ -37,7 +37,7 @@ const LocationInfo = lazyWithDelay(() => import('./components/LocationInfo'));
 export default function App() {
   return (
     <LanguageProvider>
-      <main className="min-h-screen bg-[#0D0D0D] text-white font-sans selection:bg-[#C8102E] selection:text-white">
+      <main className="min-h-screen overflow-x-hidden bg-[#0D0D0D] text-white font-sans selection:bg-[#C8102E] selection:text-white">
         <Navigation />
         
         <Suspense fallback={<HeroSkeleton />}>
