@@ -1,0 +1,25 @@
+<svg width="1600" height="1400" viewBox="0 0 1600 1400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1400" rx="48" fill="#0E0E11"/>
+  <rect x="72" y="76" width="1456" height="1248" rx="42" fill="url(#bg)"/>
+  <circle cx="1212" cy="334" r="246" fill="#C8102E" fill-opacity="0.22"/>
+  <circle cx="373" cy="1062" r="314" fill="#E5A93C" fill-opacity="0.16"/>
+  <path d="M355 663C355 497.7 481.7 371 647 371H801C966.3 371 1093 497.7 1093 663V691H355V663Z" fill="#16161A" stroke="#E5A93C" stroke-width="16"/>
+  <path d="M492 582C492 520.8 538.8 474 600 474H721C782.2 474 829 520.8 829 582V614H492V582Z" fill="#C8102E" fill-opacity="0.65"/>
+  <path d="M480 571C480 431.2 593.2 318 733 318H760C899.8 318 1013 431.2 1013 571V583H480V571Z" fill="#26262E"/>
+  <path d="M550 700C550 616.8 617.8 549 701 549H739C822.2 549 890 616.8 890 700V736H550V700Z" fill="#16161A" stroke="#E5A93C" stroke-width="12"/>
+  <path d="M582 710C582 648.1 631.1 599 693 599H724C785.9 599 835 648.1 835 710V735H582V710Z" fill="#F3E6D0" fill-opacity="0.95"/>
+  <path d="M600 750C600 694.8 642.8 652 698 652H723C778.2 652 821 694.8 821 750V790H600V750Z" fill="#E5A93C" fill-opacity="0.78"/>
+  <path d="M462 926C476 852.4 534.6 800 608 800H676C749.4 800 808 852.4 822 926L860 1110H424L462 926Z" fill="#C8102E" fill-opacity="0.82"/>
+  <path d="M1032 538C1118 538 1188 608 1188 694V740H876V694C876 608 946 538 1032 538Z" fill="#16161A" stroke="#E5A93C" stroke-width="12"/>
+  <path d="M1032 594C1080.6 594 1120 633.4 1120 682V706H944V682C944 633.4 983.4 594 1032 594Z" fill="#F4F1EB" fill-opacity="0.92"/>
+  <path d="M304 1040C340 988 394.4 958 452 958H522L500 1142H300L304 1040Z" fill="#26262E"/>
+  <path d="M1166 1062C1134.7 980 1082 924.4 1013 904L1007 998L1166 1062Z" fill="#E5A93C" fill-opacity="0.8"/>
+  <path d="M316 488C342.8 430 406 390 470 390H716C784 390 846.4 430.2 872 492L944 680H246L316 488Z" fill="#0D0D0D" stroke="#E5A93C" stroke-width="10"/>
+  <path d="M1250 246C1310 246 1360 296 1360 356V370H1140V356C1140 296 1190 246 1250 246Z" fill="#E5A93C" fill-opacity="0.65"/>
+  <defs>
+    <linearGradient id="bg" x1="72" y1="76" x2="1528" y2="1324" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#16161A"/>
+      <stop offset="1" stop-color="#0D0D0D"/>
+    </linearGradient>
+  </defs>
+</svg>

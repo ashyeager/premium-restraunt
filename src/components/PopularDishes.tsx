@@ -2,6 +2,9 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Plus, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import dish1 from '../assets/dish-1.svg';
+import dish2 from '../assets/dish-2.svg';
+import dish3 from '../assets/dish-3.svg';
 
 export default function PopularDishes() {
   const { t, language } = useLanguage();
@@ -11,19 +14,19 @@ export default function PopularDishes() {
       nameKey: "dish.1.name",
       descKey: "dish.1.desc",
       price: "2.400",
-      image: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?q=80&w=1000&auto=format&fit=crop",
+      image: dish1,
     },
     {
       nameKey: "dish.2.name",
       descKey: "dish.2.desc",
       price: "3.600",
-      image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=1000&auto=format&fit=crop",
+      image: dish2,
     },
     {
       nameKey: "dish.3.name",
       descKey: "dish.3.desc",
       price: "3.400",
-      image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=1000&auto=format&fit=crop",
+      image: dish3,
     }
   ];
 

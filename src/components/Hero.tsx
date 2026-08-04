@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { MessageSquare } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import heroFoodVisual from '../assets/hero-food-visual.svg';
 
 export default function Hero() {
   const { t, language } = useLanguage();
@@ -18,7 +19,7 @@ export default function Hero() {
     <section ref={ref} className="relative min-h-screen w-full overflow-hidden bg-[#0D0D0D]">
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1552611052-33e04de081de?q=80&w=2940&auto=format&fit=crop"
+          src={heroFoodVisual}
           alt="Wok House Asian Street Food"
           className="h-full w-full origin-center scale-105 object-cover opacity-50 mix-blend-overlay"
         />
@@ -101,15 +102,15 @@ export default function Hero() {
           >
             <div className="relative mx-auto aspect-square w-full [perspective:1200px]">
               <motion.div
-                animate={{ rotate: [-4, 6, -4], y: [0, -10, 0], x: [0, 6, 0] }}
+                animate={{ rotate: [-4, 6, -4], y: [0, -8, 0], x: [0, 5, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
                 className="absolute inset-0 rounded-[2.5rem] border border-[#E5A93C]/20 bg-[radial-gradient(circle_at_top_left,_rgba(229,169,60,0.16),_transparent_45%),linear-gradient(135deg,_rgba(255,255,255,0.08),_rgba(255,255,255,0.01))] shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl"
               >
                 <div className="absolute inset-4 rounded-[2rem] border border-white/10" />
                 <motion.div
-                  animate={{ rotateX: [8, -8, 8], rotateY: [-16, 16, -16] }}
+                  animate={{ scale: [0.96, 1.02, 0.96], opacity: [0.9, 1, 0.9] }}
                   transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute left-1/2 top-1/2 h-[58%] w-[58%] -translate-x-1/2 -translate-y-1/2 rounded-[38%] border border-[#E5A93C]/35 bg-[radial-gradient(circle_at_30%_30%,_rgba(229,169,60,0.35),_rgba(200,16,46,0.1)_45%,_rgba(13,13,13,0.95)_100%)] shadow-[0_20px_60px_rgba(200,16,46,0.12)] [transform-style:preserve-3d]"
+                  className="absolute left-1/2 top-1/2 h-[58%] w-[58%] -translate-x-1/2 -translate-y-1/2 rounded-[38%] border border-[#E5A93C]/35 bg-[radial-gradient(circle_at_30%_30%,_rgba(229,169,60,0.35),_rgba(200,16,46,0.1)_45%,_rgba(13,13,13,0.95)_100%)] shadow-[0_20px_60px_rgba(200,16,46,0.12)]"
                 >
                   <div className="absolute inset-[16%] rounded-full border border-white/20" />
                   <motion.div
