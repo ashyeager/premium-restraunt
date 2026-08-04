@@ -63,7 +63,7 @@ export default function PopularDishes() {
               viewport={{ once: true }}
               whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-[#16161A] rounded-xl overflow-hidden border border-[#26262E] flex flex-col group shadow-2xl hover:border-[#E5A93C]/30 hover:shadow-[0_20px_45px_rgba(229,169,60,0.12)] transition-all duration-300 cursor-pointer"
+              className="bg-[#16161A] rounded-xl overflow-hidden border border-[#26262E] flex flex-col group shadow-[0_12px_35px_rgba(0,0,0,0.25)] hover:border-[#E5A93C]/30 hover:shadow-[0_18px_38px_rgba(229,169,60,0.08)] transition-all duration-300 cursor-pointer"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-[#0D0D0D]">
                 <img 

@@ -169,9 +169,9 @@ export default function WokBuilder() {
                   <button
                     key={option.id}
                     onClick={() => handleSelect(activeCategory, option.id)}
-                    className={`flex min-h-[140px] w-full flex-col items-center justify-center rounded-lg border p-6 transition-all duration-300 hover:-translate-y-1 ${
+                    className={`flex min-h-[140px] w-full flex-col items-center justify-center rounded-lg border p-6 transition-all duration-300 hover:-translate-y-0.5 ${
                       isSelected
-                        ? 'border-[#C8102E] bg-[#C8102E]/5 shadow-[0_0_24px_rgba(200,16,46,0.16)]'
+                        ? 'border-[#C8102E] bg-[#C8102E]/5 shadow-[0_0_18px_rgba(200,16,46,0.12)]'
                         : 'border-[#26262E] bg-[#16161A] hover:border-[#E5A93C]/50 hover:bg-[#1B1B21]'
                     }`}
                   >
@@ -230,7 +230,7 @@ export default function WokBuilder() {
             className={`flex min-h-[48px] w-full items-center justify-center rounded-md py-4 text-sm font-bold uppercase tracking-widest transition-all duration-300 ${
               (activeStepIndex === steps.length - 1 && !isComplete)
                 ? 'cursor-not-allowed border border-[#26262E] bg-[#16161A] text-gray-500'
-                : 'bg-[#C8102E] text-white shadow-lg shadow-[#C8102E]/20 hover:-translate-y-1 hover:bg-[#A30D25]'
+                : 'bg-[#C8102E] text-white shadow-lg shadow-[#C8102E]/20 hover:-translate-y-0.5 hover:bg-[#A30D25]'
             }`}
           >
             {activeStepIndex < steps.length - 1 ? t('builder.next') : t('builder.checkout')}

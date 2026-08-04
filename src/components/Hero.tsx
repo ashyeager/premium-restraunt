@@ -34,7 +34,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#E5A93C]/20 bg-[#E5A93C]/10 px-3 py-1.5 backdrop-blur-sm"
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#E5A93C]/20 bg-[#E5A93C]/10 px-3 py-1.5 shadow-[0_0_20px_rgba(229,169,60,0.06)] backdrop-blur-sm"
             >
               <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#E5A93C] md:text-xs">
                 {t('hero.badge')}
@@ -79,7 +79,7 @@ export default function Hero() {
             >
               <a
                 href="#build"
-                className="flex min-h-[48px] flex-1 items-center justify-center gap-3 rounded bg-[#C8102E] px-8 py-4 text-center text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#A30D25] hover:shadow-[0_0_35px_rgba(200,16,46,0.45)]"
+                className="flex min-h-[48px] flex-1 items-center justify-center gap-3 rounded bg-[#C8102E] px-8 py-4 text-center text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#A30D25] hover:shadow-[0_0_22px_rgba(200,16,46,0.28)]"
               >
                 {t('hero.build')}
               </a>
@@ -87,7 +87,7 @@ export default function Hero() {
                 href="https://wa.me/96812345678"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex min-h-[48px] flex-1 items-center justify-center gap-3 rounded border border-[#26262E] bg-[#16161A]/90 px-8 py-4 text-center text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#E5A93C]/50 hover:bg-[#26262E] hover:shadow-[0_0_25px_rgba(255,255,255,0.08)]"
+                className="flex min-h-[48px] flex-1 items-center justify-center gap-3 rounded border border-[#26262E] bg-[#16161A]/90 px-8 py-4 text-center text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#E5A93C]/50 hover:bg-[#26262E] hover:shadow-[0_0_16px_rgba(255,255,255,0.06)]"
               >
                 <MessageSquare className="h-4 w-4 text-[#E5A93C]" />
                 {t('hero.whatsapp')}
